@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const images = [
   "https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=2012&auto=format&fit=crop",
@@ -63,9 +64,18 @@ const Banner: React.FC = () => {
               <p className="text-white/90 mb-6 max-w-md leading-snug">
                 Nike introducing the new air max for everyone's comfort
               </p>
-              <button className="inline-block bg-primary-blue text-white px-8 py-3 md:px-12 md:py-5 rounded-xl hover:bg-[#3452cf] hover:shadow-2xl transition-all active:scale-95 shadow-lg cursor-pointer">
+              <Link 
+                to="/#new-drops"
+                onClick={(e: React.MouseEvent) => {
+                  if (window.location.pathname === "/") {
+                    e.preventDefault();
+                    document.getElementById("new-drops")?.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
+                className="inline-block bg-primary-blue text-white px-8 py-3 md:px-12 md:py-5 rounded-xl hover:bg-[#3452cf] hover:shadow-2xl transition-all active:scale-95 shadow-lg cursor-pointer"
+              >
                 Shop Now
-              </button>
+              </Link>
             </div>
           </div>
 

@@ -1,4 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
+import React from "react";
 
 interface CategoryCardProps {
   name: string;
@@ -27,9 +29,18 @@ export const CategoryCard: React.FC<CategoryCardProps> = ({
         <h3 className="text-xl md:text-2xl lg:text-3xl font-bold leading-[0.9] uppercase">
           {name}
         </h3>
-        <div className="bg-primary-text text-white w-12 h-12 rounded-lg transform transition-transform group-hover:rotate-45 cursor-pointer flex items-center justify-center flex-shrink-0">
+        <Link 
+          to="/#new-drops"
+          onClick={(e: React.MouseEvent) => {
+            if (window.location.pathname === "/") {
+              e.preventDefault();
+              document.getElementById("new-drops")?.scrollIntoView({ behavior: "smooth" });
+            }
+          }}
+          className="bg-primary-text text-white w-12 h-12 rounded-lg transform transition-transform group-hover:rotate-45 cursor-pointer flex items-center justify-center flex-shrink-0"
+        >
           <ArrowUpRight size={24} />
-        </div>
+        </Link>
       </div>
     </div>
   );

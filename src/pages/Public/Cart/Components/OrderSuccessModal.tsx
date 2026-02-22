@@ -11,7 +11,7 @@ const SuccessModal: React.FC<SuccessModalProps> = ({ isOpen, onClose }) => {
 
   return (
     <div className="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-black/60 backdrop-blur-md animate-in fade-in duration-300">
-      <div 
+      <div
         className="bg-white w-full max-w-lg rounded-[48px] p-10 md:p-16 text-center shadow-2xl animate-in slide-in-from-bottom-8 duration-300 relative"
         onClick={(e) => e.stopPropagation()}
       >
@@ -21,11 +21,12 @@ const SuccessModal: React.FC<SuccessModalProps> = ({ isOpen, onClose }) => {
           </div>
         </div>
 
-        <h2 className="text-4xl font-black uppercase mb-4 text-primary-text leading-tight">
+        <h2 className="text-4xl font-semibold uppercase mb-4 text-primary-text leading-tight">
           ORDER SUCCESSFUL!
         </h2>
         <p className="text-primary-text/60 font-bold mb-10 leading-relaxed">
-          Your style is on its way. We've sent a confirmation email with all the details of your purchase.
+          Your style is on its way. We've sent a confirmation email with all the
+          details of your purchase.
         </p>
 
         <div className="space-y-4">
@@ -34,9 +35,12 @@ const SuccessModal: React.FC<SuccessModalProps> = ({ isOpen, onClose }) => {
             className="w-full bg-primary-text text-white py-5 rounded-xl font-bold uppercase tracking-widest hover:bg-black transition-all flex items-center justify-center gap-2 group shadow-xl active:scale-[0.98]"
           >
             Continue Shopping
-            <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform" />
+            <ChevronRight
+              size={20}
+              className="group-hover:translate-x-1 transition-transform"
+            />
           </button>
-          
+
           <button
             onClick={onClose}
             className="w-full text-primary-text font-bold text-sm uppercase underline tracking-wider hover:text-primary-blue transition-colors"

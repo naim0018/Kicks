@@ -11,7 +11,7 @@ const NewDrops: React.FC = () => {
   });
   const products = data || [];
   return (
-    <section className="w-full py-12 md:py-24 relative overflow-hidden">
+    <section id="new-drops" className="w-full py-12 md:py-24 relative overflow-hidden">
       <div className="mx-auto max-w-7xl">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12 md:mb-16 relative">
           <h2 className="relative z-10">

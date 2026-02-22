@@ -1,14 +1,17 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux";
 import { logOut } from "@/store/features/AuthSlice/authSlice";
 import { Search, User, ChevronDown, Menu, X } from "lucide-react";
+import SearchModal from "./Components/SearchModal";
 
 const Navbar: React.FC = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const dispatch = useAppDispatch();
   const cartItemsCount = useAppSelector((state) => state.cart.items.length);
   const [isOpen, setIsOpen] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
 
   const toggleMenu = () => setIsOpen((prev) => !prev);
 
@@ -18,23 +21,59 @@ const Navbar: React.FC = () => {
     setIsOpen(false);
   };
 
+  // Smooth scroll handler for anchor links
+  useEffect(() => {
+    if (location.hash === "#new-drops") {
+      const element = document.getElementById("new-drops");
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [location]);
+
   return (
-    <header className="w-full px-4 py-6 md:px-8">
+    <header className="w-full px-4 py-6 md:px-8 relative z-[100]">
       <nav className="mx-auto max-w-[1320px] bg-white rounded-xl md:rounded-2xl px-6 py-4 md:px-8 flex items-center justify-between shadow-sm border border-gray-100">
         {/* Left Navigation: Desktop */}
         <div className="hidden md:flex items-center gap-8 text-primary-text font-semibold text-sm tracking-wide">
           <Link
-            to="/#"
+            to="/#new-drops"
             className="flex items-center gap-1.5 hover:opacity-70 transition-opacity"
+            onClick={(e) => {
+              if (location.pathname === "/") {
+                e.preventDefault();
+                document.getElementById("new-drops")?.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
           >
             New Drops <span className="text-base">🔥</span>
           </Link>
           <div className="relative group cursor-pointer flex items-center gap-1 hover:opacity-70 transition-opacity">
-            <span>Men</span>
+            <Link 
+              to="/#new-drops"
+              onClick={(e) => {
+                if (location.pathname === "/") {
+                  e.preventDefault();
+                  document.getElementById("new-drops")?.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
+            >
+              Men
+            </Link>
             <ChevronDown size={14} className="mt-0.5" />
           </div>
           <div className="relative group cursor-pointer flex items-center gap-1 hover:opacity-70 transition-opacity">
-            <span>Women</span>
+            <Link 
+              to="/#new-drops"
+              onClick={(e) => {
+                if (location.pathname === "/") {
+                  e.preventDefault();
+                  document.getElementById("new-drops")?.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
+            >
+              Women
+            </Link>
             <ChevronDown size={14} className="mt-0.5" />
           </div>
         </div>
@@ -48,7 +87,7 @@ const Navbar: React.FC = () => {
         </button>
 
         {/* Center: Logo */}
-        <Link to="/" className="text-primary-text">
+        <Link to="/" className="text-primary-text translate-x-4 md:translate-x-0">
           <div className="relative ">
             <h2 className="text-[50px] font-black text-primary-text text-center flex items-center justify-center tracking-[-0.05em] -ml-5">
               KI
@@ -64,21 +103,31 @@ const Navbar: React.FC = () => {
         </Link>
 
         <div className="flex items-center gap-4 md:gap-6 text-primary-text">
-          <button className="hover:opacity-70 transition-opacity hidden sm:block">
-            <Search size={22} strokeWidth={2.5} />
-          </button>
+          <div className="relative">
+            <button 
+              onClick={() => setShowSearch(!showSearch)}
+              data-search-trigger="true"
+              className={`hover:opacity-70 transition-all hidden sm:block ${showSearch ? 'text-primary-blue scale-110' : ''}`}
+            >
+              <Search size={22} strokeWidth={2.5} />
+            </button>
+            <SearchModal isOpen={showSearch} onClose={() => setShowSearch(false)} />
+          </div>
 
           <div className="relative group">
-            <button className="hover:opacity-70 transition-opacity">
+            <button className="hover:opacity-70 transition-opacity py-2">
               <User size={22} strokeWidth={2.5} />
             </button>
-            <div className="absolute right-0 mt-2 w-40 hidden group-hover:block bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden z-50">
-              <button
-                onClick={handleLogout}
-                className="block w-full px-4 py-3 text-left text-sm font-medium hover:bg-gray-50 text-red-600 transition-colors"
-              >
-                Logout
-              </button>
+            {/* Bridge div to handle hover gap */}
+            <div className="absolute right-0 top-full pt-1.5 hidden group-hover:block z-50">
+              <div className="w-40 bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden animate-in fade-in slide-in-from-top-1 duration-200">
+                <button
+                  onClick={handleLogout}
+                  className="block w-full px-4 py-3 text-left text-sm font-black uppercase tracking-widest hover:bg-gray-50 text-red-600 transition-colors"
+                >
+                  Logout
+                </button>
+              </div>
             </div>
           </div>
 
@@ -95,22 +144,27 @@ const Navbar: React.FC = () => {
       {isOpen && (
         <div className="md:hidden mt-4 mx-auto max-w-7xl bg-[#F8F9FA] rounded-2xl p-6 shadow-lg border border-gray-100 flex flex-col gap-4 animate-in fade-in slide-in-from-top-4">
           <Link
-            to="/new-drops"
-            className="font-semibold text-lg flex items-center gap-2 text-primary-text"
-            onClick={() => setIsOpen(false)}
+            to="/#new-drops"
+            className="font-black uppercase tracking-widest text-lg flex items-center gap-2 text-primary-text"
+            onClick={() => {
+              setIsOpen(false);
+              if (location.pathname === "/") {
+                document.getElementById("new-drops")?.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
           >
             New Drops 🔥
           </Link>
-          <div className="font-semibold text-lg flex items-center justify-between text-primary-text">
+          <div className="font-black uppercase tracking-widest text-lg flex items-center justify-between text-primary-text">
             Men <ChevronDown size={18} />
           </div>
-          <div className="font-semibold text-lg flex items-center justify-between text-primary-text">
+          <div className="font-black uppercase tracking-widest text-lg flex items-center justify-between text-primary-text">
             Women <ChevronDown size={18} />
           </div>
           <hr className="border-gray-200" />
           <button
             onClick={handleLogout}
-            className="text-left font-semibold text-lg text-red-600"
+            className="text-left font-black uppercase tracking-widest text-lg text-red-600"
           >
             Logout
           </button>

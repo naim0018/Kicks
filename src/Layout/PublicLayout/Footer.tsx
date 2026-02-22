@@ -28,7 +28,7 @@ const Footer: React.FC = () => {
               <ul className="flex flex-col gap-2 text-lg text-white">
                 <li>
                   <Link
-                    to="/runners"
+                    to="/"
                     className="text-white hover:text-primary-blue transition-colors"
                   >
                     Runners
@@ -36,7 +36,7 @@ const Footer: React.FC = () => {
                 </li>
                 <li>
                   <Link
-                    to="/sneakers"
+                    to="/"
                     className="text-white hover:text-primary-blue transition-colors"
                   >
                     Sneakers
@@ -44,7 +44,7 @@ const Footer: React.FC = () => {
                 </li>
                 <li>
                   <Link
-                    to="/basketball"
+                    to="/"
                     className="text-white hover:text-primary-blue transition-colors"
                   >
                     Basketball
@@ -52,7 +52,7 @@ const Footer: React.FC = () => {
                 </li>
                 <li>
                   <Link
-                    to="/outdoor"
+                    to="/"
                     className="text-white hover:text-primary-blue transition-colors"
                   >
                     Outdoor
@@ -60,7 +60,7 @@ const Footer: React.FC = () => {
                 </li>
                 <li>
                   <Link
-                    to="/golf"
+                    to="/"
                     className="text-white hover:text-primary-blue transition-colors"
                   >
                     Golf
@@ -68,7 +68,7 @@ const Footer: React.FC = () => {
                 </li>
                 <li>
                   <Link
-                    to="/hiking"
+                    to="/"
                     className="text-white hover:text-primary-blue transition-colors"
                   >
                     Hiking
@@ -83,7 +83,7 @@ const Footer: React.FC = () => {
               <ul className="flex flex-col gap-2 text-lg text-primary-bg">
                 <li>
                   <Link
-                    to="/about"
+                    to="/"
                     className="text-white hover:text-primary-blue transition-colors"
                   >
                     About
@@ -91,7 +91,7 @@ const Footer: React.FC = () => {
                 </li>
                 <li>
                   <Link
-                    to="/contact"
+                    to="/"
                     className="text-white hover:text-primary-blue transition-colors"
                   >
                     Contact
@@ -99,7 +99,7 @@ const Footer: React.FC = () => {
                 </li>
                 <li>
                   <Link
-                    to="/blogs"
+                    to="/"
                     className="text-white hover:text-primary-blue transition-colors"
                   >
                     Blogs
