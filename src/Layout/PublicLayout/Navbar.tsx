@@ -22,7 +22,6 @@ const Navbar: React.FC = () => {
     setIsOpen(false);
   };
 
-  // Smooth scroll handler for anchor links
   useEffect(() => {
     if (location.hash === "#new-drops") {
       const element = document.getElementById("new-drops");
@@ -32,18 +31,14 @@ const Navbar: React.FC = () => {
     }
   }, [location]);
 
-  // Handle click outside to close mobile menu
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      // If menu is closed, do nothing
       if (!isOpen) return;
 
-      // If click is inside menu, do nothing
       if (menuRef.current && menuRef.current.contains(event.target as Node)) {
         return;
       }
 
-      // If click is on trigger button, let the button's own onClick handle it
       if ((event.target as HTMLElement).closest('[data-menu-trigger="true"]')) {
         return;
       }
@@ -62,7 +57,6 @@ const Navbar: React.FC = () => {
   return (
     <header className="w-full px-4 py-6 md:px-8 relative z-[100]">
       <nav className="mx-auto max-w-[1320px] bg-white rounded-xl md:rounded-2xl px-6 py-4 md:px-8 flex items-center justify-between shadow-sm border border-gray-100">
-        {/* Left Navigation: Desktop */}
         <div className="hidden md:flex items-center gap-8 text-primary-text font-semibold text-sm tracking-wide">
           <Link
             to="/#new-drops"
@@ -112,7 +106,6 @@ const Navbar: React.FC = () => {
           </div>
         </div>
 
-        {/* Mobile menu toggle */}
         <button
           onClick={toggleMenu}
           data-menu-trigger="true"
@@ -121,7 +114,6 @@ const Navbar: React.FC = () => {
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
 
-        {/* Center: Logo */}
         <Link
           to="/"
           className="text-primary-text translate-x-4 md:translate-x-0"
@@ -159,7 +151,6 @@ const Navbar: React.FC = () => {
             <button className="hover:opacity-70 transition-opacity py-2">
               <User size={22} strokeWidth={2.5} />
             </button>
-            {/* Bridge div to handle hover gap */}
             <div className="absolute right-0 top-full pt-1.5 hidden group-hover:block z-50">
               <div className="w-40 bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden animate-in fade-in slide-in-from-top-1 duration-200">
                 <button
@@ -181,7 +172,6 @@ const Navbar: React.FC = () => {
         </div>
       </nav>
 
-      {/* Mobile Navigation Drawer: Floating Modal */}
       {isOpen && (
         <div
           ref={menuRef}

@@ -22,7 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-.env
 .env.local
 .env.development.local
 .env.test.local
@@ -30,3 +29,6 @@ dist-ssr
 .gemini
 .github
 .vercel
+temp_auto_push.bat
+temp_interactive_push.bat
+branch_structure.json
