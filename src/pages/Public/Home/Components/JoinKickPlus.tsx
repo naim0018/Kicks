@@ -26,16 +26,16 @@ const JoinKickPlus: React.FC = () => {
           </form>
         </div>
 
-        <div className="relative pt-10 ">
-          <h2 className="text-[160px] font-black text-white text-center flex items-center justify-center tracking-[-0.04em] -ml-5">
+        <div className="relative pt-6 md:pt-10 ">
+          <h2 className="text-[80px] sm:text-[120px] md:text-[160px] font-black text-white text-center flex items-center justify-center tracking-[-0.04em] -ml-2 md:-ml-5 leading-none">
             KI
             <div className="relative">
-              <div className="z-0 absolute top-0 left-1 text-primary-blue stroke-text2">
+              <div className="z-0 absolute top-0 left-0.5 md:left-1 text-primary-blue stroke-text2">
                 C
               </div>
               <div className="text-white z-10 relative">C</div>
             </div>
-            <span className="-ml-3">KS</span>
+            <span className="-ml-1.5 md:-ml-3">KS</span>
           </h2>
         </div>
       </div>

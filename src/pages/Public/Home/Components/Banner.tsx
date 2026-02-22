@@ -23,14 +23,18 @@ const Banner: React.FC = () => {
       <div className="mx-auto w-full">
         {/* Main Heading */}
         <div className="w-full px-4 md:px-0">
-          <h1 className="uppercase flex items-center justify-center flex-col md:flex-row md:gap-x-10 py-10 leading-none">
-            <span className="text-primary-text text-[220px]">Do it</span>
-            <span className="text-primary-blue text-[220px]">right</span>
+          <h1 className="uppercase flex items-center justify-center md:flex-row md:gap-x-10 py-6 md:py-10 leading-none text-center md:text-left">
+            <span className="text-primary-text text-[64px] sm:text-[120px] md:text-[220px]">
+              Do it
+            </span>
+            <span className="text-primary-blue text-[64px] sm:text-[120px] md:text-[220px]">
+              right
+            </span>
           </h1>
         </div>
 
         {/* Hero Card Container */}
-        <div className="relative w-full aspect-[16/9] rounded-xl md:rounded-[64px] overflow-hidden bg-primary-bg shadow-2xl">
+        <div className="relative w-full aspect-[4/5] sm:aspect-[16/9] rounded-xl md:rounded-[64px] overflow-hidden bg-primary-bg shadow-2xl">
           {/* Main Background Image */}
           <AnimatePresence>
             <motion.img
@@ -58,18 +62,18 @@ const Banner: React.FC = () => {
           {/* Content Overlays */}
           <div className="absolute inset-0 p-8 md:p-16 flex flex-col justify-end">
             <div className="max-w-2xl">
-              <h2 className="text-white mb-2 tracking-tight">
-                NIKE AIR MAX
-              </h2>
+              <h2 className="text-white mb-2 tracking-tight">NIKE AIR MAX</h2>
               <p className="text-white/90 mb-6 max-w-md leading-snug">
                 Nike introducing the new air max for everyone's comfort
               </p>
-              <Link 
+              <Link
                 to="/#new-drops"
                 onClick={(e: React.MouseEvent) => {
                   if (window.location.pathname === "/") {
                     e.preventDefault();
-                    document.getElementById("new-drops")?.scrollIntoView({ behavior: "smooth" });
+                    document
+                      .getElementById("new-drops")
+                      ?.scrollIntoView({ behavior: "smooth" });
                   }
                 }}
                 className="inline-block bg-primary-blue text-white px-8 py-3 md:px-12 md:py-5 rounded-xl hover:bg-[#3452cf] hover:shadow-2xl transition-all active:scale-95 shadow-lg cursor-pointer"
@@ -89,7 +93,11 @@ const Banner: React.FC = () => {
                   onClick={() => setCurrentIndex(idx)}
                   className="w-16 h-16 md:w-32 md:h-32 rounded-xl md:rounded-[24px] border-4 border-white/30 overflow-hidden shadow-2xl cursor-pointer transition-all transform hover:-translate-y-1 hover:border-white"
                 >
-                  <img src={img} alt={`Shoe angle ${idx + 1}`} className="w-full h-full object-cover" />
+                  <img
+                    src={img}
+                    alt={`Shoe angle ${idx + 1}`}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               );
             })}

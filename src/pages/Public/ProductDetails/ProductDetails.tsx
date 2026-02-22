@@ -6,15 +6,13 @@ import YouMayAlsoLike from "@/common/YouMayAlsoLike";
 import { toast } from "sonner";
 import { useAppDispatch } from "@/hooks/useRedux";
 import { addToCart } from "@/store/features/CartSlice/cartSlice";
+import { useNavigate } from "react-router-dom";
 
 const ProductDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const dispatch = useAppDispatch();
-  const {
-    data: product,
-    isLoading,
-    isError,
-  } = useGetProductByIdQuery(id!);
+  const navigate = useNavigate();
+  const { data: product, isLoading, isError } = useGetProductByIdQuery(id!);
   const [selectedSize, setSelectedSize] = useState<number>(41);
   const [activeImage, setActiveImage] = useState<number>(0);
   const [isWishlisted, setIsWishlisted] = useState(false);
@@ -37,7 +35,7 @@ const ProductDetails: React.FC = () => {
       };
 
       dispatch(addToCart(cartItem));
-      
+
       toast.success(`${product.title} added to bag!`, {
         description: `Size: ${selectedSize}`,
       });
@@ -182,7 +180,10 @@ const ProductDetails: React.FC = () => {
             </button>
           </div>
 
-          <button className="w-full bg-primary-blue text-white font-bold py-5 rounded-xl uppercase tracking-widest hover:bg-[#3452cf] transition-colors mb-10 shadow-lg shadow-primary-blue/20">
+          <button
+            onClick={() => navigate(`/cart`)}
+            className="w-full bg-primary-blue text-white font-bold py-5 rounded-xl uppercase tracking-widest hover:bg-[#3452cf] transition-colors mb-10 shadow-lg shadow-primary-blue/20"
+          >
             Buy it Now
           </button>
 

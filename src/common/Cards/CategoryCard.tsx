@@ -15,7 +15,7 @@ export const CategoryCard: React.FC<CategoryCardProps> = ({
 }) => {
   return (
     <div
-      className={`w-full min-h-[600px] bg-[#ECEEF0] relative group flex flex-col justify-between transition-colors hover:bg-[#E2E4E6] overflow-hidden ${className}`}
+      className={`w-full min-h-[350px] sm:min-h-[450px] md:min-h-[600px] bg-[#ECEEF0] relative group flex flex-col justify-between transition-colors hover:bg-[#E2E4E6] overflow-hidden ${className}`}
     >
       <div className="relative flex-1 w-full flex items-center justify-center overflow-hidden ">
         <img
@@ -25,7 +25,7 @@ export const CategoryCard: React.FC<CategoryCardProps> = ({
         />
       </div>
 
-      <div className="flex justify-between items-center gap-10 p-8 pt-5">
+      <div className="flex justify-between items-center gap-4 md:gap-10 p-4 md:p-8 pt-2 md:pt-5">
         <h3 className="text-xl md:text-2xl lg:text-3xl font-bold leading-[0.9] uppercase">
           {name}
         </h3>

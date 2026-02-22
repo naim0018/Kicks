@@ -75,39 +75,65 @@
     opacity: 0.8;
   }
 
-  /* Typography Rules */
+  /* Typography Rules - Responsive */
   h1,
   h2 {
     font-family: var(--font-rubik);
     font-weight: 600;
-    font-size: 74px;
+    font-size: 40px; /* Mobile */
     line-height: 0.95;
     letter-spacing: 0;
     text-transform: uppercase;
   }
 
+  @media (min-width: 768px) {
+    h1, h2 {
+      font-size: 74px; /* Desktop */
+    }
+  }
+
   h3 {
     font-family: var(--font-rubik);
     font-weight: 600;
-    font-size: 24px;
+    font-size: 18px; /* Mobile */
     line-height: 1;
     letter-spacing: 0;
   }
+
+  @media (min-width: 768px) {
+    h3 {
+      font-size: 24px; /* Desktop */
+    }
+  }
+
   h4 {
     font-family: var(--font-rubik);
     font-weight: 600;
-    font-size: 36px;
+    font-size: 24px; /* Mobile */
     line-height: 1;
     letter-spacing: 0;
+  }
+
+  @media (min-width: 768px) {
+    h4 {
+      font-size: 36px; /* Desktop */
+    }
   }
 
   p {
     font-family: var(--font-open-sans);
     font-weight: 600;
-    font-size: 20px;
-    line-height: 1;
+    font-size: 16px; /* Mobile */
+    line-height: 1.2;
     letter-spacing: 0;
     color: var(--primary-text);
+  }
+
+  @media (min-width: 768px) {
+    p {
+      font-size: 20px; /* Desktop */
+      line-height: 1;
+    }
   }
 
   button,
@@ -126,16 +152,47 @@
     box-shadow: none !important;
   }
 }
+
 .stroke-text {
-  -webkit-text-stroke: 30px var(--primary-text);
-}
-.stroke-text-small {
-  -webkit-text-stroke: 2px var(--color-white);
-}
-.stroke-text2 {
-  -webkit-text-stroke: 15px var(--primary-blue);
+  -webkit-text-stroke: 10px var(--primary-text);
 }
 
-/* .clip-k-shape {
-  clip-path: path("M0 0 L0 100 L50 50 L0 0 Z");
-} */
+@media (min-width: 1024px) {
+  .stroke-text {
+    -webkit-text-stroke: 30px var(--primary-text);
+  }
+}
+
+.stroke-text-small {
+  -webkit-text-stroke: 1px var(--color-white);
+}
+
+@media (min-width: 1024px) {
+  .stroke-text-small {
+    -webkit-text-stroke: 2px var(--color-white);
+  }
+}
+
+.stroke-text2 {
+  -webkit-text-stroke: 5px var(--primary-blue);
+}
+
+@media (min-width: 1024px) {
+  .stroke-text2 {
+    -webkit-text-stroke: 15px var(--primary-blue);
+  }
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #232321;
+}
