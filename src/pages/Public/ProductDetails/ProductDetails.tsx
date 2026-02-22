@@ -31,7 +31,7 @@ const ProductDetails: React.FC = () => {
         category: product.category.name,
         size: selectedSize,
         quantity: 1,
-        color: "Standard", // Defaulting as API doesn't provide colors
+        color: "Standard",
       };
 
       dispatch(addToCart(cartItem));
@@ -49,7 +49,6 @@ const ProductDetails: React.FC = () => {
     return (
       <div className="bg-primary-bg min-h-screen pt-12 pb-24 px-4 md:px-8">
         <div className="max-w-[1320px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 animate-pulse">
-          {/* Image skeleton */}
           <div className="lg:col-span-7 grid grid-cols-2 gap-3">
             {[...Array(4)].map((_, i) => (
               <div
@@ -58,7 +57,6 @@ const ProductDetails: React.FC = () => {
               />
             ))}
           </div>
-          {/* Info skeleton */}
           <div className="lg:col-span-5 flex flex-col gap-6 pt-4">
             <div className="h-6 w-24 bg-[#ECEEF0] rounded-full" />
             <div className="h-16 w-full bg-[#ECEEF0] rounded-xl" />
@@ -89,7 +87,6 @@ const ProductDetails: React.FC = () => {
   return (
     <div className="bg-primary-bg min-h-screen pt-12 pb-24 px-4 md:px-8">
       <div className="max-w-[1320px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
-        {/* ── Image Gallery ─────────────────────────────── */}
         <div className="lg:col-span-7">
           <div className="grid grid-cols-2 gap-2 md:gap-3">
             {product.images.map((img, idx) => (
@@ -118,9 +115,7 @@ const ProductDetails: React.FC = () => {
           </div>
         </div>
 
-        {/* ── Product Info ───────────────────────────────── */}
         <div className="lg:col-span-5 flex flex-col pt-4 text-primary-text">
-          {/* Badge + Title + Price */}
           <div className="mb-8">
             <span className="bg-primary-blue text-white text-xs font-bold px-4 py-2 rounded-xl uppercase tracking-widest inline-block mb-4">
               {product.category.name}
@@ -131,7 +126,6 @@ const ProductDetails: React.FC = () => {
             </p>
           </div>
 
-          {/* Size Selector */}
           <div className="mb-8">
             <div className="flex justify-between items-center mb-4">
               <h3 className="uppercase">Size</h3>
@@ -156,7 +150,6 @@ const ProductDetails: React.FC = () => {
             </div>
           </div>
 
-          {/* Action Buttons */}
           <div className="flex gap-3 mb-4">
             <button
               onClick={handleAddToCart}
@@ -190,7 +183,6 @@ const ProductDetails: React.FC = () => {
             Buy it Now
           </button>
 
-          {/* Product Description */}
           <div className="border-t border-[#ECEEF0] pt-8">
             <h3 className="mb-4 uppercase">About the Product</h3>
             <p className="opacity-60 text-sm leading-relaxed font-medium">
@@ -200,7 +192,6 @@ const ProductDetails: React.FC = () => {
         </div>
       </div>
 
-      {/* ── You May Also Like ───────────────────────── */}
       <div className="max-w-[1320px] mx-auto px-4 md:px-8 border-t border-[#ECEEF0] mt-16">
         <YouMayAlsoLike currentProductId={product!.id} />
       </div>

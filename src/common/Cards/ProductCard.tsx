@@ -17,7 +17,6 @@ export const ProductCard: React.FC<Product> = ({
 
   return (
     <div className="flex flex-col group cursor-pointer">
-      {/* Image Container */}
       <Link
         to={`/product-details/${id}`}
         className="relative aspect-square bg-[#ECEEF0] rounded-[28px] md:rounded-3xl overflow-hidden p-2 mb-4"
@@ -36,12 +35,10 @@ export const ProductCard: React.FC<Product> = ({
         />
       </Link>
 
-      {/* Info */}
       <h3 className="mb-4 leading-tight uppercase line-clamp-2 min-h-[4rem]">
         {title}
       </h3>
 
-      {/* Action Button */}
       <Link
         to={`/product-details/${id}`}
         className="w-full bg-primary-text text-white py-4 rounded-xl text-center uppercase tracking-widest text-xs md:text-sm font-medium hover:bg-black transition-colors"

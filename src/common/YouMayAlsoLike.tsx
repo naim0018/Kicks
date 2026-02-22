@@ -10,7 +10,6 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 interface YouMayAlsoLikeProps {
-  /** Exclude the current product so it doesn't appear in suggestions */
   currentProductId?: number;
 }
 
@@ -77,7 +76,6 @@ const YouMayAlsoLike: React.FC<YouMayAlsoLikeProps> = ({
         }
       `}</style>
 
-      {/* Header */}
       <div className="flex justify-between items-center mb-8">
         <h4 className="text-primary-text text-5xl">You may also like</h4>
         <div className="flex gap-2">
@@ -96,7 +94,6 @@ const YouMayAlsoLike: React.FC<YouMayAlsoLikeProps> = ({
         </div>
       </div>
 
-      {/* Slider */}
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         loop={true}

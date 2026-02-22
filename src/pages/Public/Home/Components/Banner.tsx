@@ -21,7 +21,6 @@ const Banner: React.FC = () => {
   return (
     <section className="w-full">
       <div className="mx-auto w-full">
-        {/* Main Heading */}
         <div className="w-full px-4 md:px-0">
           <h1 className="uppercase flex items-center justify-center md:flex-row md:gap-x-10 pb-6 md:py-10 leading-none text-center md:text-left">
             <span className="text-primary-text text-[64px] sm:text-[120px] md:text-[220px]">
@@ -33,9 +32,7 @@ const Banner: React.FC = () => {
           </h1>
         </div>
 
-        {/* Hero Card Container */}
         <div className="relative w-full aspect-[4/5] sm:aspect-[16/9] rounded-xl md:rounded-[64px] overflow-hidden bg-primary-bg shadow-2xl">
-          {/* Main Background Image */}
           <AnimatePresence>
             <motion.img
               key={currentIndex}
@@ -49,17 +46,14 @@ const Banner: React.FC = () => {
             />
           </AnimatePresence>
 
-          {/* Subtle Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
 
-          {/* Left Vertical Label */}
           <div className="absolute left-0 top-[12%] z-10">
             <p className="bg-primary-text text-white px-2 py-5 md:px-3 rounded-l-2xl [writing-mode:vertical-lr] rotate-180 flex items-center justify-center text-[8px] md:text-xs uppercase">
               Nike product of the year
             </p>
           </div>
 
-          {/* Content Overlays */}
           <div className="absolute inset-0 p-8 md:p-16 flex flex-col justify-end">
             <div className="max-w-2xl">
               <h2 className="text-white mb-2 tracking-tight">NIKE AIR MAX</h2>
@@ -83,10 +77,9 @@ const Banner: React.FC = () => {
             </div>
           </div>
 
-          {/* Thumbnail Gallery (Bottom Right) - Only show inactive images */}
           <div className="absolute bottom-6 right-6 md:bottom-12 md:right-12 flex flex-col gap-3 md:gap-4 z-20">
             {images.map((img, idx) => {
-              if (idx === currentIndex) return null; // Don't show the active image here
+              if (idx === currentIndex) return null;
               return (
                 <div
                   key={idx}

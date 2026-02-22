@@ -31,7 +31,6 @@ const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      // If the click is on the container or a child, don't close
       if (
         containerRef.current &&
         containerRef.current.contains(event.target as Node)
@@ -39,7 +38,6 @@ const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => {
         return;
       }
 
-      // If the click is on the trigger button, let the trigger's own toggle logic handle it
       if (
         (event.target as HTMLElement).closest('[data-search-trigger="true"]')
       ) {
@@ -99,7 +97,6 @@ const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => {
           )}
         </div>
 
-        {/* Search Results */}
         <div className="mt-4 max-h-[400px] overflow-y-auto custom-scrollbar">
           {debouncedSearch.length >= 2 ? (
             <div className="space-y-2">
