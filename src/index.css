@@ -1,0 +1,141 @@
+/* =======================
+   📦 Font Imports
+========================== */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+
+/* =======================
+   📦 Tailwind Import
+========================== */
+@import "tailwindcss";
+
+/* =======================
+   🎨 Theme Custom Properties
+========================== */
+@theme {
+  /* Custom Website Colors */
+  --color-primary-text: #232321;
+  --color-primary-blue: #4a69e2;
+  --color-primary-bg: #e7e7e3;
+  --color-primary-yellow: #ffa52f;
+
+  /* Font Families */
+  --font-rubik: "Rubik", sans-serif;
+  --font-open-sans: "Open Sans", sans-serif;
+  --font-sans: "Rubik", ui-sans-serif, system-ui, sans-serif;
+}
+/* =======================
+   🌈 Root Color Theme Variables
+========================== */
+:root {
+  --primary-background: #e7e7e3;
+  --primary-text: #232321;
+  --primary-blue: #4a69e2;
+  --primary-yellow: #ffa52f;
+
+  --light-background: #fefefe;
+  --border: #e8eaeb;
+}
+
+/* =======================
+   🎨 Inline Theme Variables (For JS Use or Theme Switching)
+========================== */
+@theme inline {
+  --color-primary-background: var(--primary-background);
+  --color-primary-text: var(--primary-text);
+  --color-primary-blue: var(--primary-blue);
+  --color-primary-yellow: var(--primary-yellow);
+}
+
+/* =======================
+   ✨ Base Styles
+========================== */
+@layer base {
+  html {
+    font-family: var(--font-rubik);
+    background-color: var(--primary-background);
+    color: var(--primary-text);
+  }
+
+  body {
+    font-family: var(--font-rubik);
+    background-color: var(--primary-background);
+    color: var(--primary-text);
+  }
+
+  * {
+    border-color: var(--border);
+  }
+
+  a {
+    @apply transition-all no-underline;
+    color: var(--primary-blue);
+  }
+
+  a:hover {
+    opacity: 0.8;
+  }
+
+  /* Typography Rules */
+  h1,
+  h2 {
+    font-family: var(--font-rubik);
+    font-weight: 600;
+    font-size: 74px;
+    line-height: 0.95;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  h3 {
+    font-family: var(--font-rubik);
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: 0;
+  }
+  h4 {
+    font-family: var(--font-rubik);
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 1;
+    letter-spacing: 0;
+  }
+
+  p {
+    font-family: var(--font-open-sans);
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1;
+    letter-spacing: 0;
+    color: var(--primary-text);
+  }
+
+  button,
+  .button-text {
+    font-family: var(--font-rubik);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1;
+    letter-spacing: 0.25px;
+    text-transform: uppercase;
+  }
+
+  *:focus,
+  *:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+}
+.stroke-text {
+  -webkit-text-stroke: 30px var(--primary-text);
+}
+.stroke-text-small {
+  -webkit-text-stroke: 2px var(--color-white);
+}
+.stroke-text2 {
+  -webkit-text-stroke: 15px var(--primary-blue);
+}
+
+/* .clip-k-shape {
+  clip-path: path("M0 0 L0 100 L50 50 L0 0 Z");
+} */
