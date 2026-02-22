@@ -10,13 +10,13 @@ const Footer: React.FC = () => {
         <div className="">
           <JoinKickPlus />
         </div>
-        <div className="bg-primary-text rounded-[48px] h-auto min-h-[580px] md:rounded-[64px] overflow-hidden pt-10 md:pt-16 text-white relative -mt-32 md:-mt-28 flex flex-col justify-between">
+        <div className="bg-primary-text rounded-[48px] h-[530px] sm:h-[500px] md:h-[580px] md:rounded-[64px] overflow-hidden pt-10 md:pt-16 text-white relative -mt-32 md:-mt-28">
           {/* Main Footer Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12 relative z-10 px-8 md:px-16">
+          <div className="grid grid-cols-2 lg:grid-cols-5 gap-8 md:gap-12 relative z-10 px-8 md:px-16">
             {/* About us */}
-            <div className="col-span-1 md:col-span-2 space-y-4">
+            <div className="col-span-2 lg:col-span-2 space-y-4">
               <h4 className="text-primary-yellow ">About us</h4>
-              <p className="text-primary-bg/80 text-base md:text-lg font-medium leading-relaxed max-w-xs">
+              <p className="text-primary-bg/80 text-sm md:text-lg font-medium leading-relaxed max-w-xs">
                 We are the biggest hyperstore in the universe. We got you all
                 cover with our exclusive collections and latest drops.
               </p>
@@ -25,7 +25,7 @@ const Footer: React.FC = () => {
             {/* Categories */}
             <div className="space-y-4">
               <h3 className="text-primary-yellow ">Categories</h3>
-              <ul className="flex flex-col gap-2 text-base md:text-lg text-white">
+              <ul className="flex flex-col gap-1 md:gap-2 text-sm md:text-lg text-white">
                 <li>
                   <Link
                     to="/"
@@ -78,9 +78,9 @@ const Footer: React.FC = () => {
             </div>
 
             {/* Company */}
-            <div>
-              <h3 className="text-primary-yellow pb-4">Company</h3>
-              <ul className="flex flex-col gap-2 text-base md:text-lg text-primary-bg">
+            <div className="space-y-4">
+              <h3 className="text-primary-yellow">Company</h3>
+              <ul className="flex flex-col gap-1 md:gap-2 text-sm md:text-lg text-primary-bg">
                 <li>
                   <Link
                     to="/"
@@ -109,39 +109,39 @@ const Footer: React.FC = () => {
             </div>
 
             {/* Follow us */}
-            <div>
-              <h3 className="text-primary-yellow pb-4">Follow us</h3>
+            <div className="col-span-2 lg:col-span-1 space-y-4">
+              <h3 className="text-primary-yellow">Follow us</h3>
               <div className="flex gap-4">
                 <a
                   href="#"
                   className="text-white hover:text-primary-blue transition-colors"
                 >
-                  <FaFacebook size={24} />
+                  <FaFacebook size={20} />
                 </a>
                 <a
                   href="#"
                   className="text-white hover:text-primary-blue transition-colors"
                 >
-                  <FaInstagram size={24} />
+                  <FaInstagram size={20} />
                 </a>
                 <a
                   href="#"
                   className="text-white hover:text-primary-blue transition-colors"
                 >
-                  <FaTwitter size={24} />
+                  <FaTwitter size={20} />
                 </a>
                 <a
                   href="#"
                   className="text-white hover:text-primary-blue transition-colors"
                 >
-                  <FaTiktok size={24} />
+                  <FaTiktok size={20} />
                 </a>
               </div>
             </div>
           </div>
           {/* Massive Background Logo */}
-          <div className="relative pt-10 mt-auto">
-            <h2 className="text-[120px] sm:text-[200px] md:text-[300px] lg:text-[430px] font-black text-white text-center flex items-center justify-center tracking-[-0.05em] leading-none -ml-2 md:-ml-5">
+          <div className="absolute bottom-[-9%] md:bottom-[-30%] left-0 right-0 z-0 pointer-events-none">
+            <h2 className="text-[120px] sm:text-[200px] md:text-[300px] lg:text-[380px] xl:text-[420px] font-black text-white text-center flex items-center justify-center tracking-[-0.05em] leading-none -ml-2 md:-ml-5">
               KI
               <div className="relative">
                 <div className="z-0 absolute top-0 left-1.5 md:left-4 text-primary-text stroke-text">
@@ -157,9 +157,7 @@ const Footer: React.FC = () => {
 
       {/* Copyright */}
       <div className="text-center mt-6">
-        <p className="text-primary-text text-sm ">
-          © All rights reserved
-        </p>
+        <p className="text-primary-text text-sm ">© All rights reserved</p>
       </div>
     </footer>
   );

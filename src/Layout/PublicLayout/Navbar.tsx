@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux";
 import { logOut } from "@/store/features/AuthSlice/authSlice";
@@ -12,6 +12,7 @@ const Navbar: React.FC = () => {
   const cartItemsCount = useAppSelector((state) => state.cart.items.length);
   const [isOpen, setIsOpen] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   const toggleMenu = () => setIsOpen((prev) => !prev);
 
@@ -31,6 +32,33 @@ const Navbar: React.FC = () => {
     }
   }, [location]);
 
+  // Handle click outside to close mobile menu
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      // If menu is closed, do nothing
+      if (!isOpen) return;
+
+      // If click is inside menu, do nothing
+      if (menuRef.current && menuRef.current.contains(event.target as Node)) {
+        return;
+      }
+
+      // If click is on trigger button, let the button's own onClick handle it
+      if ((event.target as HTMLElement).closest('[data-menu-trigger="true"]')) {
+        return;
+      }
+
+      setIsOpen(false);
+    };
+
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen]);
+
   return (
     <header className="w-full px-4 py-6 md:px-8 relative z-[100]">
       <nav className="mx-auto max-w-[1320px] bg-white rounded-xl md:rounded-2xl px-6 py-4 md:px-8 flex items-center justify-between shadow-sm border border-gray-100">
@@ -42,19 +70,23 @@ const Navbar: React.FC = () => {
             onClick={(e) => {
               if (location.pathname === "/") {
                 e.preventDefault();
-                document.getElementById("new-drops")?.scrollIntoView({ behavior: "smooth" });
+                document
+                  .getElementById("new-drops")
+                  ?.scrollIntoView({ behavior: "smooth" });
               }
             }}
           >
             New Drops <span className="text-base">🔥</span>
           </Link>
           <div className="relative group cursor-pointer flex items-center gap-1 hover:opacity-70 transition-opacity">
-            <Link 
+            <Link
               to="/#new-drops"
               onClick={(e) => {
                 if (location.pathname === "/") {
                   e.preventDefault();
-                  document.getElementById("new-drops")?.scrollIntoView({ behavior: "smooth" });
+                  document
+                    .getElementById("new-drops")
+                    ?.scrollIntoView({ behavior: "smooth" });
                 }
               }}
             >
@@ -63,12 +95,14 @@ const Navbar: React.FC = () => {
             <ChevronDown size={14} className="mt-0.5" />
           </div>
           <div className="relative group cursor-pointer flex items-center gap-1 hover:opacity-70 transition-opacity">
-            <Link 
+            <Link
               to="/#new-drops"
               onClick={(e) => {
                 if (location.pathname === "/") {
                   e.preventDefault();
-                  document.getElementById("new-drops")?.scrollIntoView({ behavior: "smooth" });
+                  document
+                    .getElementById("new-drops")
+                    ?.scrollIntoView({ behavior: "smooth" });
                 }
               }}
             >
@@ -81,13 +115,17 @@ const Navbar: React.FC = () => {
         {/* Mobile menu toggle */}
         <button
           onClick={toggleMenu}
+          data-menu-trigger="true"
           className="md:hidden text-primary-text hover:opacity-70"
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
 
         {/* Center: Logo */}
-        <Link to="/" className="text-primary-text translate-x-4 md:translate-x-0">
+        <Link
+          to="/"
+          className="text-primary-text translate-x-4 md:translate-x-0"
+        >
           <div className="relative ">
             <h2 className="text-[50px] font-black text-primary-text text-center flex items-center justify-center tracking-[-0.05em] -ml-5">
               KI
@@ -104,14 +142,17 @@ const Navbar: React.FC = () => {
 
         <div className="flex items-center gap-4 md:gap-6 text-primary-text">
           <div className="relative">
-            <button 
+            <button
               onClick={() => setShowSearch(!showSearch)}
               data-search-trigger="true"
-              className={`hover:opacity-70 transition-all hidden sm:block ${showSearch ? 'text-primary-blue scale-110' : ''}`}
+              className={`hover:opacity-70 transition-all hidden sm:block ${showSearch ? "text-primary-blue scale-110" : ""}`}
             >
               <Search size={22} strokeWidth={2.5} />
             </button>
-            <SearchModal isOpen={showSearch} onClose={() => setShowSearch(false)} />
+            <SearchModal
+              isOpen={showSearch}
+              onClose={() => setShowSearch(false)}
+            />
           </div>
 
           <div className="relative group">
@@ -123,7 +164,7 @@ const Navbar: React.FC = () => {
               <div className="w-40 bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden animate-in fade-in slide-in-from-top-1 duration-200">
                 <button
                   onClick={handleLogout}
-                  className="block w-full px-4 py-3 text-left text-sm font-black uppercase tracking-widest hover:bg-gray-50 text-red-600 transition-colors"
+                  className="block w-full px-4 py-3 text-left text-sm font-semibold uppercase tracking-widest hover:bg-gray-50 text-red-600 transition-colors"
                 >
                   Logout
                 </button>
@@ -140,31 +181,60 @@ const Navbar: React.FC = () => {
         </div>
       </nav>
 
-      {/* Mobile Navigation Drawer */}
+      {/* Mobile Navigation Drawer: Floating Modal */}
       {isOpen && (
-        <div className="md:hidden mt-4 mx-auto max-w-7xl bg-[#F8F9FA] rounded-2xl p-6 shadow-lg border border-gray-100 flex flex-col gap-4 animate-in fade-in slide-in-from-top-4">
+        <div
+          ref={menuRef}
+          className="md:hidden absolute top-[calc(100%-1.5rem)] left-4 right-4 bg-white rounded-2xl p-6 shadow-2xl border border-gray-100 flex flex-col gap-5 animate-in fade-in zoom-in-95 duration-200 z-[110]"
+        >
           <Link
             to="/#new-drops"
-            className="font-black uppercase tracking-widest text-lg flex items-center gap-2 text-primary-text"
+            className="font-semibold uppercase tracking-widest text-lg flex items-center gap-2 text-primary-text hover:text-primary-blue transition-colors"
             onClick={() => {
               setIsOpen(false);
               if (location.pathname === "/") {
-                document.getElementById("new-drops")?.scrollIntoView({ behavior: "smooth" });
+                document
+                  .getElementById("new-drops")
+                  ?.scrollIntoView({ behavior: "smooth" });
               }
             }}
           >
             New Drops 🔥
           </Link>
-          <div className="font-black uppercase tracking-widest text-lg flex items-center justify-between text-primary-text">
+          <Link
+            to="/#new-drops"
+            className="font-semibold uppercase tracking-widest text-lg flex items-center justify-between text-primary-text hover:text-primary-blue transition-colors"
+            onClick={(e) => {
+              setIsOpen(false);
+              if (location.pathname === "/") {
+                e.preventDefault();
+                document
+                  .getElementById("new-drops")
+                  ?.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
+          >
             Men <ChevronDown size={18} />
-          </div>
-          <div className="font-black uppercase tracking-widest text-lg flex items-center justify-between text-primary-text">
+          </Link>
+          <Link
+            to="/#new-drops"
+            className="font-semibold uppercase tracking-widest text-lg flex items-center justify-between text-primary-text hover:text-primary-blue transition-colors"
+            onClick={(e) => {
+              setIsOpen(false);
+              if (location.pathname === "/") {
+                e.preventDefault();
+                document
+                  .getElementById("new-drops")
+                  ?.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
+          >
             Women <ChevronDown size={18} />
-          </div>
-          <hr className="border-gray-200" />
+          </Link>
+          <hr className="border-gray-100" />
           <button
             onClick={handleLogout}
-            className="text-left font-black uppercase tracking-widest text-lg text-red-600"
+            className="text-left font-semibold uppercase tracking-widest text-lg text-red-600 hover:opacity-70 transition-opacity"
           >
             Logout
           </button>

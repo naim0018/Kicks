@@ -3,7 +3,7 @@ import React from "react";
 const JoinKickPlus: React.FC = () => {
   return (
     <div className="bg-primary-blue rounded-[48px] md:rounded-[64px] p-8 md:p-16 relative ">
-      <div className="flex flex-col md:flex-row justify-between items-center gap-8 relative z-10 pb-22">
+      <div className="flex flex-col md:flex-row justify-start items-start sm:justify-between sm:items-center gap-8 relative z-10 pb-22">
         <div className="">
           <h2 className="text-white text-4xl md:text-5xl leading-none uppercase pb-6">
             Join our KicksPlus <br /> Club & get 15% off
@@ -26,7 +26,7 @@ const JoinKickPlus: React.FC = () => {
           </form>
         </div>
 
-        <div className="relative pt-6 md:pt-10 ">
+        <div className="relative md:pt-10 mb-6 sm:mb-0">
           <h2 className="text-[80px] sm:text-[120px] md:text-[160px] font-black text-white text-center flex items-center justify-center tracking-[-0.04em] -ml-2 md:-ml-5 leading-none">
             KI
             <div className="relative">

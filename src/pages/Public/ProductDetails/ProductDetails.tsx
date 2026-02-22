@@ -181,7 +181,10 @@ const ProductDetails: React.FC = () => {
           </div>
 
           <button
-            onClick={() => navigate(`/cart`)}
+            onClick={() => {
+              handleAddToCart();
+              navigate(`/cart`);
+            }}
             className="w-full bg-primary-blue text-white font-bold py-5 rounded-xl uppercase tracking-widest hover:bg-[#3452cf] transition-colors mb-10 shadow-lg shadow-primary-blue/20"
           >
             Buy it Now

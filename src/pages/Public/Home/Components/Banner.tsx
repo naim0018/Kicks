@@ -23,7 +23,7 @@ const Banner: React.FC = () => {
       <div className="mx-auto w-full">
         {/* Main Heading */}
         <div className="w-full px-4 md:px-0">
-          <h1 className="uppercase flex items-center justify-center md:flex-row md:gap-x-10 py-6 md:py-10 leading-none text-center md:text-left">
+          <h1 className="uppercase flex items-center justify-center md:flex-row md:gap-x-10 pb-6 md:py-10 leading-none text-center md:text-left">
             <span className="text-primary-text text-[64px] sm:text-[120px] md:text-[220px]">
               Do it
             </span>
